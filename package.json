@@ -1,0 +1,13 @@
+{
+    "name": "issue-management",
+    "author": "moranraviv",
+    "main": "server.js",
+    "dependencies": {
+        "express": "^4.17.2",
+        "express-validator": "^6.14.0",
+        "http-status": "^1.5.0",
+        "is-valid-domain": "^0.1.5",
+        "is-valid-path": "^0.1.1",
+        "mongoose": "^6.1.4"
+    }
+}

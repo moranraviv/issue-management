@@ -7,7 +7,7 @@ function isValidApi(api) {
         const { method, host, path } = splitFullApi(api);
     
         return method && validation.SUPPORTED_METHOD.includes(method) &&
-               host && isValidDomain(host) &&
+               host && isValidHost(host) &&
                path && isValidDomainPath(path);    
     }
     catch {

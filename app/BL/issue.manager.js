@@ -7,10 +7,7 @@ const getBy = async (filters) => {
 };
 
 const create = async (issue) => {
-    let newDoc = new Issue();
-    newDoc = issue;
-
-    const doc = await Issue.create(newDoc);
+    const doc = await Issue.create(issue);
     return doc.id;
 };
 

@@ -5,15 +5,9 @@ const issuesManager = require('../BL/issue.manager');
 const getByQueryParams = async (req, res) => {
     try {        
         if (req.query.api) {
-            let { method, host, path } = apiParser.splitFullApi(req.query.api);
+            const { method, host, path } = apiParser.splitFullApi(req.query.api);
            
-            if (method && host && path) {
-                res.redirect(`issues?method=${method}&host=${host}&path=${path}`);
-            }
-            else {
-                // should not happen, validated in middleware
-                res.json({ status: httpStatus.BAD_REQUEST, error: "failed to parse api" });
-            }
+            res.redirect(`/issues?method=${method}&host=${host}&path=${path}`);
             return;
         }
     

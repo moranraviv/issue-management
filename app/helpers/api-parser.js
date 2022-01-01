@@ -3,23 +3,16 @@ const isValidPath = require('is-valid-path');
 const validation = require('../config/validation.constants')
 
 function isValidApi(api) {
-    const [method, hostAndPath] = api.split(' ');
-    if (method && hostAndPath)
-    {
-        if (!validation.SUPPORTED_METHOD.includes(method)) {
-            return false;
-        }
-
-        const seperatorIndex = hostAndPath.indexOf('/');
-        if (seperatorIndex === -1) {
-            return false;
-        }
-
-        const host = hostAndPath.slice(0, seperatorIndex);
-        return isValidDomain(host);
+    try {
+        const { method, host, path } = splitFullApi(api);
+    
+        return method && validation.SUPPORTED_METHOD.includes(method) &&
+               host && isValidDomain(host) &&
+               path && isValidDomainPath(path);    
     }
-
-    return false;
+    catch {
+        return false;
+    }
 }
 
 function splitFullApi(api) {
